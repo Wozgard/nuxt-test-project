@@ -3,7 +3,7 @@
         <navBar />
         <main class="main">
             <div class="main__container _container">
-                <nuxt v-bind:team="team"/>
+                <nuxt/>
             </div>
         </main>
         <fooTer />
@@ -13,6 +13,7 @@
 <script>
 import navBar from '~/components/navBar/navBar.vue';
 import fooTer from '~/components/footer/footer.vue';
+
 export default {
     components: {
         navBar,

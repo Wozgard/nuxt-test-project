@@ -1,7 +1,7 @@
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'some page',
+        title: 'ShoArt',
         htmlAttrs: {
             lang: 'en'
         },
@@ -16,8 +16,23 @@ export default {
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
         ]
     },
+    serverMiddleware: [
+        { path: "/api", handler: require("body-parser").json() },
+        {
+            path: "/api",
+            handler: (req, res, next) => {
+                const url = require("url");
+                req.query = url.parse(req.url, true).query;
+                req.params = { ...req.query, ...req.body };
+                next();
+            }
+        },
+        { path: "/api", handler: "~/serverMiddleware/api-server.js" }
+    ],
 
-    loading: { color: 'green' },
+    loading: {
+        color: '#58f'
+    },
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
         '@/node_modules/bootstrap/dist/css/bootstrap.min.css',
@@ -37,6 +52,7 @@ export default {
 
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
+        '@nuxtjs/axios'
     ],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -3,8 +3,9 @@
         <h1>Our Team</h1>
 
         <ul>
+            <!-- выдает ошибку, говоря, что team не определен, this не помогает -->
             <li v-for="employee of team" :key="employee.id">
-                <a href="#" @click.prevent="openEmployee(employee)">{{ employee.name }}: {{ employee.job }}</a>
+                <a href="#" @click.prevent="openEmployee(employee)">{{ employee.name }}: {{ employee.username }}</a>
             </li>
         </ul>
     </section>
@@ -12,17 +13,21 @@
 
 <script>
 export default {
-    data(){
-        return{
-            team: [
-                {id: 0, name: "Святослав", job: "Fullstack Developer"},
-                {id: 1, name: "Ренат", job: "Web Disigner"},
-            ]
+    async fetch({ store }) {
+        //console.log(store.getters['teams/team'])
+        if (store.getters['teams/team'].length === 0) {
+            await store.dispatch('teams/fetchTeam')
+            //console.log(store.getters['teams/team'])
         }
     },
-    methods:{
+    computed: {
+        team() {
+            return this.$store.getters['teams/team']
+        }
+    },
+    methods: {
         // Переход на страницу работника по его айди
-        openEmployee(employee){
+        openEmployee(employee) {
             this.$router.push('/team/' + employee.id)
         }
     }
@@ -30,22 +35,23 @@ export default {
 </script>
 
 <style lang='scss'>
-ul{
+ul {
     margin-top: 20px;
 }
-li{
-    font-size: 20px;
-    opacity: 0.7;   
 
-    &:not(:last-child){
+li {
+    font-size: 20px;
+    opacity: 0.7;
+
+    &:not(:last-child) {
         margin-bottom: 10px;
     }
 }
+
 // only if user on PC
 @media (any-hover:hover) {
-    a:hover{
+    a:hover {
         color: #58f;
     }
 }
-
 </style>
