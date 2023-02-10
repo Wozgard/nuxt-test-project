@@ -3,3 +3,9 @@
     padding: 0 15px;
     margin: 0 auto;
  }
+ ._some-text {
+    display: block;
+    width: 700px;
+    font-size: 17px;
+    line-height: 1.2;
+ }

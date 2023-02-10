@@ -1,0 +1,1 @@
+mongoimport --jsonArray "C:\Users\svayt\YandexDisk\Narnia\Year-2022\nuxt-test-project\static\team.json" -d shoart -c team

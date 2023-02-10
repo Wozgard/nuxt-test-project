@@ -15,6 +15,24 @@ export const actions = {
             console.error(e);
             throw e;
         }
+    },
+    async addEmployee({ commit }, body) {
+        try {
+            const team = await this.$axios.$post("/api/team/add", body);
+            commit('updateUsers', team);
+        } catch (e) {
+            console.error(e);
+            throw e;
+        }
+    },
+    async delEmployee({ commit }, element) {
+        try {
+            const team = await this.$axios.$post("/api/team/del", element);
+            commit('updateUsers', team);
+        } catch (e) {
+            console.error(e);
+            throw e;
+        }
     }
 }
 export const getters = {

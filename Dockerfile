@@ -1,0 +1,3 @@
+FROM node
+COPY . /app
+EXPOSE 80
