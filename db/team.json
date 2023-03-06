@@ -1,16 +1,12 @@
 [
     {
-        "_id": {
-            "$oid": "63e1eb537771471f77f40088"
-        },
+        "_id": "63e1eb537771471f77f40088",
         "name": "Святослав",
         "job": "Fullstack Developer",
         "delete": false
     },
     {
-        "_id": {
-            "$oid": "63e1eb537771471f77f40089"
-        },
+        "_id": "63e1eb537771471f77f40089",
         "name": "Ренат",
         "job": "Web Disigner",
         "delete": false

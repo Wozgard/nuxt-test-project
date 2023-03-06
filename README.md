@@ -3,6 +3,17 @@ This project is my preparation for the first project of our not yet fully formed
 
 ## Build Setup
 
+### With docker
+
+```bash
+$ docker-compose up
+```
+
+### Without docker
+
+Change in /api/team.js and in /db/insertDB from 'mongodb://mongo:27017' to 'mongodb://localhost:27017'.
+And change in /store/teams.js from 'http://localhost/api/team/index' to '/api/team/index' or 'http://localhost:3000/api/team/index'.
+
 ```bash
 # install dependencies
 $ npm install
@@ -28,3 +39,4 @@ For detailed explanation on how things work, check out the [documentation](https
 - Vue
 - Vuex
 - Mongo
+- Docker & Docker-compose

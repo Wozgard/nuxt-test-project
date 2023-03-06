@@ -16,6 +16,10 @@ export default {
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
         ]
     },
+    server: {
+        port: 80,
+        host: '0.0.0.0'
+    },
     serverMiddleware: [
         { path: "/api", handler: require("body-parser").json() },
         {
@@ -36,7 +40,7 @@ export default {
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
         '@/node_modules/bootstrap/dist/css/bootstrap.min.css',
-        '@/components/css/general.css'
+        '@/components/00_css/general.css'
     ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -57,6 +61,12 @@ export default {
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
+        extend(config, { isDev, isClient }) {
+
+            config.node = {
+                fs: 'empty'
+            }
+        },
         loaders: {
             sass: {
                 implementation: require('sass'),

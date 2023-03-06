@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
-const team = require('../models/team');
+const team = require('../models/team.js');
 
 async function getDataFromMongo() {
     try {
-        await mongoose.connect('mongodb://localhost:27017', {
+        await mongoose.connect('mongodb://mongo:27017', {
             dbName: "shoart",
             autoCreate: false
         })
@@ -18,12 +18,12 @@ async function getDataFromMongo() {
 
 async function add(body) {
     try {
-        await mongoose.connect('mongodb://localhost:27017', {
+        await mongoose.connect('mongodb://mongo:27017', {
             dbName: "shoart",
             autoCreate: false
         })
-        const newteam = new team(body);
-        await newteam.save()
+        const newTeam = new team(body);
+        await newTeam.save()
     } catch (e) {
         console.log(e)
     }
@@ -32,7 +32,7 @@ async function add(body) {
 
 async function del(element) {
     try {
-        await mongoose.connect('mongodb://localhost:27017', {
+        await mongoose.connect('mongodb://mongo:27017', {
             dbName: "shoart",
             autoCreate: false
         })

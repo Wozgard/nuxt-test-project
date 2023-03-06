@@ -9,7 +9,7 @@ export const mutations = {
 export const actions = {
     async fetchTeam({ commit }) {
         try {
-            const team = await this.$axios.$get("/api/team/index");
+            const team = await this.$axios.$get("http://localhost/api/team/index");
             commit('updateUsers', team);
         } catch (e) {
             console.error(e);
@@ -18,7 +18,7 @@ export const actions = {
     },
     async addEmployee({ commit }, body) {
         try {
-            const team = await this.$axios.$post("/api/team/add", body);
+            const team = await this.$axios.$post("http://localhost/api/team/add", body);
             commit('updateUsers', team);
         } catch (e) {
             console.error(e);
@@ -27,7 +27,7 @@ export const actions = {
     },
     async delEmployee({ commit }, element) {
         try {
-            const team = await this.$axios.$post("/api/team/del", element);
+            const team = await this.$axios.$post("http://localhost/api/team/del", element);
             commit('updateUsers', team);
         } catch (e) {
             console.error(e);

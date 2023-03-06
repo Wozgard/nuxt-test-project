@@ -1,0 +1,16 @@
+FROM node:latest
+
+RUN mkdir -p /app && mkdir -p /data
+
+WORKDIR /app
+ADD ./package.json /app/package.json
+RUN npm install
+ADD . /app
+
+WORKDIR /data
+ADD ./static/database /static/database
+RUN node insertDB.js
+
+EXPOSE 80
+
+CMD npm run start

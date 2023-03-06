@@ -1,0 +1,57 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    container_name: nuxt-2.15.8
+    volumes:
+      - db:/data
+    ports:
+      - "80:80"
+    links:
+      - mongo
+
+  mongo:
+    build: ./static/database
+    restart: unless-stopped
+    container_name: mongo-6.0.4
+    volumes:
+      - db:/data
+    ports:
+      - ":27017"
+
+volumes:
+  db:
+
+=========================================================================================================
+version: '3.9'
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    container_name: nuxt-2.15.8
+    volumes:
+      - db:/data
+    ports:
+      - "80:80"
+    links:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    ports:
+      - ":27017"
+
+  mongo_seed:
+    build: ./static/database
+    restart: unless-stopped
+    container_name: mongo-6.0.4
+    volumes:
+      - db:/data
+    links:
+      - mongodb
+
+volumes:
+  db:
+
+

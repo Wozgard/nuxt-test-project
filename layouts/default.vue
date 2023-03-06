@@ -3,7 +3,7 @@
         <navBar />
         <main class="main">
             <div class="main__container _container">
-                <nuxt/>
+                <nuxt />
             </div>
         </main>
         <fooTer />
@@ -24,20 +24,23 @@ export default {
 
 
 <style>
-@import url('@/components/scss/null.scss');
+@import url('@/components/00_scss/null.scss');
+
 ._container {
     max-width: 1380px;
     padding: 0 15px;
     margin: 0 auto;
- }
- .wrapper{
+}
+
+.wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100vh;
- }
- .main{
+}
+
+.main {
     margin-top: 20px;
     flex: 1 1 auto;
- }
+}
 </style>
